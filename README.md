@@ -32,7 +32,7 @@ five:\
 <img src='./Bitmaps/five (7,7).bmp' width='300'>\
 [oldschool](https://opengameart.org/content/ascii-bitmap-font-oldschool) :\
 <img src='./Photos/futuristic.png' width='300'>
-<img src='./Bitmaps/oldschool (7,7).bmp' width='300'>\
+<img src='./Bitmaps/oldschool (7,9).bmp' width='300'>\
 [cellphone](https://opengameart.org/content/ascii-bitmap-font-cellphone) :\
 <img src='./Photos/cellphone.png' width='300'>
-<img src='./Bitmaps/cellphone (7,9).bmp' width='300'>\
+<img src='./Bitmaps/cellphone (7,9).bmp' width='300'>
