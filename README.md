@@ -1,7 +1,7 @@
 # Micropython Fontlib
 A simple micropython library that adds 4 different fonts to it, I made it for a monocrome screen (pcd8544 nokia screen)  but you should be able to easily modify it for color screens 
 
-# How to use
+# How to use it
 add fontlib.py and fonts_dictionary.py to your micropython device, then use the library to modify a framebuffer:
 ```python
 import framebuf
