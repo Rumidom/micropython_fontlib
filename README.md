@@ -25,4 +25,4 @@ add a bitmap font to the Bitmaps folder and run the 'BitmapDictionaryGenerator.i
 
 # Available fonts:
 futuristic:
-
+![plot](./Photos/futuristic.png)
