@@ -24,5 +24,6 @@ see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Dis
 add a bitmap font to the Bitmaps folder and run the 'BitmapDictionaryGenerator.ipynb' python notebook
 
 # Available fonts:
-futuristic:
-<img src='./Photos/futuristic.png' width='100'>
+futuristic:\
+<img src='./Photos/futuristic.png' width='300'>
+<img src='./Bitmap/futuristic.bmp' width='300'>
