@@ -21,7 +21,7 @@ fontlib.printstring("The Quick Gray",pos_x,pos_y,spce,fbuf,font_name = "futurist
 see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Display
 
 # How create new fonts
-add a bitmap font, and rename it similary to the others in the Bitmaps folder the run the 'BitmapDictionaryGenerator.ipynb' python notebook
+add a bitmap font, and rename it similary to the others in the Bitmaps folder then run the 'BitmapDictionaryGenerator.ipynb' python notebook
 
 # Available fonts:
 [futuristic](https://opengameart.org/content/ascii-bitmap-font-futuristic) :\
