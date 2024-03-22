@@ -4,7 +4,12 @@ def printchar(letter,xpos,ypos,fbuf,font = "five",invert = False,charwidth = 5):
     origin = xpos
     charval = ord(letter)
     index = charval-32 #start code, 32 or space
-    character = fonts_dictionary.fontdict[font][index]
+    try:
+        character = fonts_dictionary.fontdict[font][index]
+    except Exception as e:
+        print("Character N:",charval)
+        print(e)
+        
     rows = [character[i:i+charwidth] for i in range(0,len(character),charwidth)]
     rowslen = len(rows)
     orig_y = ypos
