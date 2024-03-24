@@ -1,6 +1,8 @@
 import fonts_dictionary
 
-def printchar(letter,xpos,ypos,fbuf,font = "five",invert = False,charwidth = 5):
+def printchar(letter,xpos,ypos,fbuf,font = "five",invert = False,charwidth=None):
+    if charwidth == None:
+        charwidth = fonts_dictionary.fontdict['fontsize'][font][0]
     origin = xpos
     charval = ord(letter)
     index = charval-32 #start code, 32 or space
@@ -25,15 +27,15 @@ def printchar(letter,xpos,ypos,fbuf,font = "five",invert = False,charwidth = 5):
         xpos=origin
         ypos+=1
 
-def printstring(string,xpos,ypos,spce,fbuf,font = "five",invert=False,charwidth=5):
-    character = fonts_dictionary.fontdict[font][0]
+def printstring(string,xpos,ypos,spce,fbuf,font = "five",invert=False):
+    char_size = fonts_dictionary.fontdict['fontsize'][font]
     if invert:
-        string_width = (charwidth+spce)*(len(string)-1)+charwidth+1
-        string_height = len(character)//charwidth
+        string_width = (char_size[0]+spce)*(len(string)-1)+char_size[0]+1
+        string_height = char_size[1]
         fbuf.rect(xpos-1, ypos-1, string_width+1, string_height+2, 1)
     for i,c in enumerate(string):
-        printchar(c,xpos,ypos,fbuf,font = font,invert=invert,charwidth=charwidth)
-        xpos+=(spce+charwidth)
+        printchar(c,xpos,ypos,fbuf,font = font,invert=invert,charwidth=char_size[0])
+        xpos+=(spce+char_size[0])
         if (invert and i < len(string)-1):
             fbuf.rect(xpos-spce, ypos, spce, string_height, 1,1)
     
