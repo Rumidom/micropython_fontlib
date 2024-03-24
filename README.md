@@ -35,7 +35,7 @@ five:\
 <img src='./Bitmaps/oldschool (5,7).bmp' width='300'>\
 [cellphone](https://opengameart.org/content/ascii-bitmap-font-cellphone) :\
 <img src='./Photos/cellphone.png' width='300'>
-<img src='./Bitmaps/cellphone (5,7).bmp' width='300'>
+<img src='./Bitmaps/cellphone (5,7).bmp' width='300'>\
 icons:\
 <img src='./Photos/icons.png' width='300'>
-<img src='./Bitmaps/icons (5,7).bmp' width='300'>
+<img src='./Bitmaps/icons (5,7).bmp' width='300'>\
