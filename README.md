@@ -38,4 +38,4 @@ five:\
 <img src='./Bitmaps/cellphone (5,7).bmp' width='300'>\
 icons:\
 <img src='./Photos/icons.png' width='300'>
-<img src='./Bitmaps/icons (5,7).bmp' width='300'>\
+<img src='./Bitmaps/icons (5,7).bmp' width='300'>
