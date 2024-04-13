@@ -23,6 +23,11 @@ see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Dis
 # How create new fonts
 add a bitmap font, and rename it similary to the others in the Bitmaps folder then run the 'BitmapDictionaryGenerator.ipynb' python notebook
 
+# TODO
+- [] Load fonts directly from 1bit bitmaps
+- [] Support for portuguese special characters (ç,á,é,í,ó,ú,â,ê,ô,ã,õ)(Ç,Á,É,Í,Ó,Ú,Â,Ê,Ô,Ã,Õ).
+- [] Support for color screens
+  
 # Available fonts:
 [futuristic](https://opengameart.org/content/ascii-bitmap-font-futuristic) :\
 <img src='./Photos/futuristic.png' width='300'>
