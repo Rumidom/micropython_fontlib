@@ -27,11 +27,12 @@ add a bitmap font, and rename it similary to the others in the Bitmaps folder th
 - [x] Load fonts directly from 1bit bitmaps
 - [ ] Support for portuguese special characters (ç,á,é,í,ó,ú,â,ê,ô,ã,õ)(Ç,Á,É,Í,Ó,Ú,Â,Ê,Ô,Ã,Õ).
 - [ ] Support for color screens
-  
+
+.pixelated:image-rendering: crisp-edges;
 # Available fonts:
 [futuristic](https://opengameart.org/content/ascii-bitmap-font-futuristic) :\
 <img src='./Photos/futuristic.png' width='300'>
-<img src='./Bitmaps/futuristic.png (5,5).bmp' width='300' style="image-rendering: crisp-edges;" >\
+<img src='./Bitmaps/futuristic.png (5,5).bmp' width='300' class='pixelated' >\
 five:\
 <img src='./Photos/five.png' width='300'>
 <img src='./Bitmaps/five (5,5).bmp' width='300'>\
