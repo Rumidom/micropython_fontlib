@@ -1,5 +1,5 @@
 # Micropython Fontlib
-A simple micropython library for using 1bit bitmaps as fonts, I made it for a monocrome screen (pcd8544 nokia screen)  but you should work with any monocrome screens through (framebuffer)[https://docs.micropython.org/en/latest/library/framebuf.html] 
+A simple micropython library for using 1bit bitmaps as fonts, I made it for a monocrome screen (pcd8544 nokia screen)  but you should work with any monocrome screens through [framebuffer](https://docs.micropython.org/en/latest/library/framebuf.html)
 
 # How to use it
 add fontlib.py and a 1bit font .bmp file to your micropython device, then use the library to modify a framebuffer:
