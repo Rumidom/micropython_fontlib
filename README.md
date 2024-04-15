@@ -1,8 +1,8 @@
 # Micropython Fontlib
-A simple micropython library that adds 5 different fonts to it, I made it for a monocrome screen (pcd8544 nokia screen)  but you should be able to easily modify it for color screens 
+A simple micropython library for using 1bit bitmaps as fonts, I made it for a monocrome screen (pcd8544 nokia screen)  but you should work with any monocrome screens through (framebuffer)[https://docs.micropython.org/en/latest/library/framebuf.html] 
 
 # How to use it
-add fontlib.py and fonts_dictionary.py to your micropython device, then use the library to modify a framebuffer:
+add fontlib.py and a 1bit font .bmp file to your micropython device, then use the library to modify a framebuffer:
 ```python
 import framebuf
 import fontlib
@@ -13,10 +13,12 @@ spce = 1 # characters spacing
 pos_x = 0 # X position on the frame buffer to print the text
 pos_y = 0 # Y position on the frame buffer to print the text
 
+five = fontlib.font("five (5,5).bmp") # Loads font to ram 
+
 buffer = bytearray((screen_height // 8) * screen_width)
 fbuf = framebuf.FrameBuffer(buffer, screen_width, screen_height, framebuf.MONO_VLSB)
 fbuf.fill(0)
-fontlib.printstring("The Quick Gray",pos_x,pos_y,spce,fbuf,font_name = "futuristic")
+fontlib.prt("The Quick Gray",0,0,1,fbuf,five) # prints text using font
 ```
 see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Display
 
