@@ -31,7 +31,7 @@ add a bitmap font, and rename it similary to the others in the Bitmaps folder th
 # Available fonts:
 [futuristic](https://opengameart.org/content/ascii-bitmap-font-futuristic) :\
 <img src='./Photos/futuristic.png' width='300'>
-<img src='./Bitmaps/futuristic.png (5,5).bmp' width='300' style="image-rendering: pixelated;" >\
+<img src='./Bitmaps/futuristic.png (5,5).bmp' width='300' style="image-rendering: crisp-edges;" >\
 five:\
 <img src='./Photos/five.png' width='300'>
 <img src='./Bitmaps/five (5,5).bmp' width='300'>\
