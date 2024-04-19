@@ -46,3 +46,6 @@ five:\
 icons:\
 <img src='./photos/icons.png' width='300'>
 <img src='./fonts/icons (5,7).bmp' width='300'>
+
+# LICENSE:
+this project is [MIT licensed](https://github.com/Rumidom/micropython_fontlib/blob/main/LICENSE)
