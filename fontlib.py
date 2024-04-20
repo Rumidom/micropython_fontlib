@@ -10,7 +10,10 @@ def reverse_Bits(n, no_of_bits):
     return result
 
 def getbitmap(path):
-    file = open(path, "rb")
+    try:
+        file = open(path, "rb")
+    except:
+        raise Exception("Cant load font, check if path is correct")
     filebytes = bytearray(file.read())
     file.close()
     imagesize = (int.from_bytes(filebytes[18:22],"little"),int.from_bytes(filebytes[22:26],"little"))
@@ -88,8 +91,9 @@ class font():
 
         self.size = (int(szstrlist[0]),int(szstrlist[1]))
         self.CharList = chop_image(bmp_path, self.size,paddingsize = 1)
-    
+        #print(len(self.CharList))
     def getchar(self,N):
+        #print("N:",N)
         return self.CharList[N]
     
 def DrawPixels(xpos,ypos,charbytes,charsize,fbuf,invert=False):
@@ -98,25 +102,43 @@ def DrawPixels(xpos,ypos,charbytes,charsize,fbuf,invert=False):
     for byt in charbytes:
         for i in range(8):
             if ypos<charsize[1]+orig_y:
-                fbuf.pixel(xpos,ypos,(invert,not invert)[((byt >> i) & 1)])
+                if not invert:
+                    if ((byt >> i) & 1):
+                        fbuf.pixel(xpos,ypos,1)
+                else:
+                    fbuf.pixel(xpos,ypos,(invert,not invert)[((byt >> i) & 1)])
             xpos+= 1
             if xpos >= charsize[0]+orig_x:
                 xpos = orig_x
                 ypos += 1
             
 def printchar(letter,xpos,ypos,fbuf,font,invert = False,charwidth=None):
+    Schar_dict = {231: (None, 99, 96), 199: (None, 67, 96), 225: (98, 97, None), 233: (98, 101, None), 237: (98, 105, None), 243: (98, 111, None), 250: (98, 117, None), 193: (103, 65, None), 201: (103, 69, None), 205: (103, 73, None), 211: (103, 79, None), 218: (103, 85, None), 226: (99, 97, None), 234: (99, 97, None), 244: (99, 111, None), 227: (94, 97, None), 245: (94, 111, None), 194: (104, 65, None), 202: (104, 69, None), 212: (104, 79, None), 195: (107, 65, None), 213: (107, 79, None)}
     if charwidth == None:
         charwidth = font.size[0]
     origin = xpos
-    
+    addontopval = None
+    addbelowval = None
     charval = ord(letter)
-    if charval > 127: #Todo support for portuguese special characters
+
+    if charval in Schar_dict:
+        addontopval = Schar_dict[charval][0]
+        addbelowval = Schar_dict[charval][2]
+        charval = Schar_dict[charval][1]
+        #print(charval)
+    elif charval > 126:
         charval = 0x3f
-    index = charval-32 #start code, 32 or space
-    character = font.getchar(index)
 
+    character = font.getchar(charval-32)
     DrawPixels(xpos,ypos,character,font.size,fbuf,invert=invert)
-
+    if addontopval:
+        addontop = font.getchar(addontopval)
+        DrawPixels(xpos,ypos-font.size[1],addontop,font.size,fbuf,invert=invert)
+    if addbelowval:
+        addbelow = font.getchar(addbelowval)
+        DrawPixels(xpos,ypos+font.size[1],addbelow,font.size,fbuf,invert=invert)
+        
+    
 def prt(string,xpos,ypos,spce,fbuf,font,invert=False):
     char_size = font.size
     if invert:
