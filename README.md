@@ -32,17 +32,20 @@ add a bitmap font, and rename it similary to the others in the Bitmaps folder th
 
 # Available fonts:
 [futuristic](https://opengameart.org/content/ascii-bitmap-font-futuristic) :\
-<img src='./Photos/futuristic.png' width='300'>
+<img src='./photos/futuristic.png' width='300'>
 <img src='./fonts/futuristic (5,7).bmp' width='300' >\
 five:\
-<img src='./Photos/five.png' width='300'>
+<img src='./photos/five.png' width='300'>
 <img src='./fonts/five (5,5).bmp' width='300'>\
 [oldschool](https://opengameart.org/content/ascii-bitmap-font-oldschool) :\
-<img src='./Photos/oldschool.png' width='300'>
+<img src='./photos/oldschool.png' width='300'>
 <img src='./fonts/oldschool (5,7).bmp' width='300'>\
 [cellphone](https://opengameart.org/content/ascii-bitmap-font-cellphone) :\
-<img src='./Photos/cellphone.png' width='300'>
+<img src='./photos/cellphone.png' width='300'>
 <img src='./fonts/cellphone (5,7).bmp' width='300'>\
 icons:\
-<img src='./Photos/icons.png' width='300'>
+<img src='./photos/icons.png' width='300'>
 <img src='./fonts/icons (5,7).bmp' width='300'>
+
+# LICENSE:
+this project is [MIT licensed](https://github.com/Rumidom/micropython_fontlib/blob/main/LICENSE)
