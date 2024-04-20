@@ -27,7 +27,7 @@ add a bitmap font, and rename it similary to the others in the Bitmaps folder th
 
 # TODO
 - [x] Load fonts directly from 1bit bitmaps
-- [ ] Support for portuguese special characters (ç,á,é,í,ó,ú,â,ê,ô,ã,õ)(Ç,Á,É,Í,Ó,Ú,Â,Ê,Ô,Ã,Õ).
+- [x] Support for portuguese special characters (ç,á,é,í,ó,ú,â,ê,ô,ã,õ)(Ç,Á,É,Í,Ó,Ú,Â,Ê,Ô,Ã,Õ).
 - [ ] Support for color screens
 
 # Available fonts:
