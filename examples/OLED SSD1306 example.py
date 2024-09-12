@@ -1,5 +1,5 @@
 import machine
-import ssd1306
+import ssd1306_b
 import fontlib
 import framebuf
  
