@@ -100,11 +100,11 @@ class SSD1306(framebuf.FrameBuffer):
         self.write_cmd(self.pages - 1)
       
     def show(self):
-        self.prepWrite(self)
+        self.prepWrite()
         self.write_data(self.buffer)
 
     def show_buffer(self,buffer):
-        self.prepWrite(self)
+        self.prepWrite()
         self.write_data(buffer)
 
 class SSD1306_I2C(SSD1306):
