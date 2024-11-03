@@ -4,10 +4,10 @@ import fontlib
 import framebuf
  
 screen_width = 128
-screen_height = 32
+screen_height = 64
  
 i2c = machine.I2C(sda=machine.Pin(4), scl=machine.Pin(5))
-oled = ssd1306.SSD1306_I2C(128, 32, i2c)
+oled = ssd1306_b.SSD1306_I2C(screen_width, screen_height, i2c)
 oled.fill(1)
 oled.show()
  
