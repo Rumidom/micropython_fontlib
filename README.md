@@ -18,7 +18,7 @@ five = fontlib.font("five (5,5).bmp") # Loads font to ram
 buffer = bytearray((screen_height // 8) * screen_width)
 fbuf = framebuf.FrameBuffer(buffer, screen_width, screen_height, framebuf.MONO_VLSB)
 fbuf.fill(0)
-fontlib.prt("The Quick Gray",0,0,1,fbuf,five) # prints text using font
+fontlib.prt("The Quick Gray",pos_x,pos_y,1,fbuf,five) # prints text using font
 ```
 see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Display
 
