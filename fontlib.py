@@ -15,10 +15,11 @@ def getbitmap(path):
         raise Exception("Cant load font, check if path is correct")
     filebytes = bytearray(file.read())
     file.close()
+    bmptag = filebytes[0:2]
     imagesize = (int.from_bytes(filebytes[18:22],"little"),int.from_bytes(filebytes[22:26],"little"))
     filezise =  int.from_bytes(filebytes[2:6],"little")
     dataOffset = int.from_bytes(filebytes[10:14],"little")
-    format = int.from_bytes(filebytes[28:30],"little")
+    fmat = int.from_bytes(filebytes[28:30],"little")
     pallet = [0,1][b'\x00\x00\x00\xff\xff\xff\xff\xff' == filebytes[54:62]]
     imagedata = bytearray(reversed(filebytes[dataOffset:]))
     bytesperrow = math.ceil(imagesize[0]/8)
@@ -33,16 +34,26 @@ def getbitmap(path):
     for i in range(imagesize[1]):
         imagerows.append(bytearray(reversed(imagedata[i*rowsize:(i+1)*rowsize])))
     imagerows = tuple(imagerows)
-    return (imagerows,imagesize,filezise,dataOffset,format)
+    return (imagerows,imagesize,filezise,dataOffset,fmat,bmptag,pallet)
 
-def getCutTile(imagerows,tilepos,chopsize,imagesize,paddingsize = 1):
+def drawBitmap(path,x,y,fbuf):
+    bmp_tup = getbitmap(path)
+    pallet = bmp_tup[6]
+    imagerows = bmp_tup[0]
+    imagesize = bmp_tup[1]
+    imagedata = bytearray()
     bytesperrow = math.ceil(imagesize[0]/8)
     rowPadding = ((4-(bytesperrow%4))%4)
     rowsize = bytesperrow +rowPadding
-    bitsperrow = bytesperrow*8
-    bitpadding = bitsperrow-imagesize[0]
+    posx = x +imagesize[0]
+    posy = y
+    for row in imagerows:
+        imagedata += row[:-rowPadding]
+        
+    DrawPixels(x,y,imagedata,imagesize,fbuf,invert=True)
+                
+def getCutTile(imagerows,tilepos,chopsize,imagesize,paddingsize = 1):
     newchopsize = (chopsize[0]+paddingsize*2,chopsize[1]+paddingsize*2)
-
     left = tilepos[0] * newchopsize[0]
     upper = tilepos[1] * newchopsize[1]
     cutdata = bytearray()
@@ -149,3 +160,6 @@ def prt(string,xpos,ypos,spce,fbuf,font,invert=False):
         xpos+=(spce+char_size[0])
         if (invert and i < len(string)-1):
             fbuf.rect(xpos-spce, ypos, spce, string_height, 1,1)
+
+
+
