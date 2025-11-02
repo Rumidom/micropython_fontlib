@@ -1,5 +1,5 @@
 import machine
-import ssd1306_b
+import ssd1306
 import fontlib
 import framebuf
  
@@ -7,7 +7,7 @@ screen_width = 128
 screen_height = 64
  
 i2c = machine.I2C(sda=machine.Pin(4), scl=machine.Pin(5))
-oled = ssd1306_b.SSD1306_I2C(screen_width, screen_height, i2c)
+oled = ssd1306.SSD1306_I2C(screen_width, screen_height, i2c)
 oled.fill(1)
 oled.show()
  
@@ -19,8 +19,7 @@ oldschool = fontlib.font("oldschool (5,7).bmp") # Loads font to ram
 FontList = [five,icons,futuristic,oldschool]
 i = 0
  
-buffer = bytearray((screen_height // 8) * screen_width)
-fbuf = framebuf.FrameBuffer(buffer, screen_width, screen_height, framebuf.MONO_VLSB)
+fbuf = framebuf.FrameBuffer(oled.buffer, screen_width, screen_height, framebuf.MONO_VLSB)
 fbuf.fill(0)
 fontlib.prt("The Quick Gray",0,0,1,fbuf,FontList[i]) # prints text using font
 fontlib.prt("Fox Jumped Over",0,10,1,fbuf,FontList[i]) # prints text using font
