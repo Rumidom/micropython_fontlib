@@ -31,7 +31,7 @@ oled.show()
 see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Display
 
 # How create new fonts
-Most image editors should be able to save files to 1bit bmp, I recommend [paint.net](https://www.getpaint.net/), draw 1 pixel padding around each letters, the file name should include the character size, like the fonts found in the fonts folder. on paint.net if you "save as" and choose bmp it will prompt you with "saving configuration" choose the 1bit option. alternatively you can create the font as a normal bmp file and convert it using Pillow:
+Most image editors should be able to save files to 1bit bmp, I recommend [paint.net](https://www.getpaint.net/), draw 1 pixel padding around each letters, the file name should include the character size, like the fonts found in the fonts folder. on paint.net if you "save as" and choose bmp it will prompt you with "saving configuration" choose the 1bit option. alternatively you can create the font as a normal bmp file and convert it using [Pillow](https://pypi.org/project/pillow/):
 
 ```python
 from PIL import Image
