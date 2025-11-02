@@ -1,5 +1,5 @@
 # Micropython Fontlib
-A simple micropython library for using 1bit bitmaps as fonts, I made it for a monocrome screen (pcd8544 nokia screen)  but you should work with any monocrome screens through [framebuffer](https://docs.micropython.org/en/latest/library/framebuf.html)
+A micropython library for displaying 1bit bitmaps as fonts,and displaying 1bit bitmaps sprites, it was first tested on a monocrome screen (pcd8544 nokia screen)  but you should work with any monocrome screen through [framebuffer](https://docs.micropython.org/en/latest/library/framebuf.html)
 
 # How to use it
 Add fontlib.py and a 1bit font .bmp (should follow the same formatting of the bmp files on the Bitmaps folder) file to your micropython device, then use the library to modify a framebuffer:
@@ -31,7 +31,7 @@ oled.show()
 see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Display
 
 # How create new fonts
-Most image editors should be able to save files to 1bit bmp, I recommend [paint.net](https://www.getpaint.net/), draw 1 pixel padding around each letters, the file name should include the character size, like the fonts in the fonts folder. on paint.net if you "save as" and choose bmp it will prompt you with "saving configuration" choose the 1bit option. 
+Most image editors should be able to save files to 1bit bmp, I recommend [paint.net](https://www.getpaint.net/), draw 1 pixel padding around each letters, the file name should include the character size, like the fonts found in the fonts folder. on paint.net if you "save as" and choose bmp it will prompt you with "saving configuration" choose the 1bit option.
 
 # TODO
 - [x] Load fonts directly from 1bit bitmaps
