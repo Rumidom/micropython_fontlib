@@ -6,13 +6,16 @@ Add fontlib.py and a 1bit font .bmp (should follow the same formatting of the bm
 ```python
 import framebuf
 import fontlib
-import ssd1306_b
+import ssd1306
+from machine import Pin,I2C
 
 screen_width = 128
-screen_height = 64
+screen_height = 32
 
-i2c = machine.I2C(scl=machine.Pin(4), sda=machine.Pin(5))
-oled = ssd1306_b.SSD1306_I2C(screen_width, screen_height, i2c)
+#ESP8266 scl=Pin(4),sda=Pin(5)
+#ESP32 C3 scl=Pin(9),sda=Pin(8)
+i2c = I2C(scl=Pin(9),sda=Pin(8))
+oled = ssd1306.SSD1306_I2C(screen_width, screen_height, i2c)
 
 spce = 1 # characters spacing
 pos_x = 0 # X position on the frame buffer to print the text
@@ -20,10 +23,9 @@ pos_y = 0 # Y position on the frame buffer to print the text
 
 five = fontlib.font("five (5,5).bmp") # Loads font to ram 
 
-buffer = bytearray((screen_height // 8) * screen_width)
-fbuf = framebuf.FrameBuffer(buffer, screen_width, screen_height, framebuf.MONO_VLSB)
+fbuf = framebuf.FrameBuffer(oled.buffer, screen_width, screen_height, framebuf.MONO_VLSB)
 fbuf.fill(0)
-fontlib.prt("The Quick Gray",pos_x,pos_y,1,fbuf,five) # prints text using font
+fontlib.prt("The Quick Gray",pos_x,pos_y,spce,fbuf,five) # prints text using font
 oled.show()
 ```
 see the examples folder for a exemple on how to use it with a Nokia 5110 LCD Display
