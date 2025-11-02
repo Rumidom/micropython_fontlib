@@ -106,23 +106,21 @@ class font():
         #print("N:",N)
         return self.CharList[N]
     
-def DrawPixels(xpos,ypos,charbytes,charsize,fbuf,invert=False):
+def DrawPixels(xpos,ypos,charbytes,charsize,fbuf,invert=False,fill = 1):
     orig_y = ypos
     orig_x = xpos
     for byt in charbytes:
         for i in range(8):
             if ypos<charsize[1]+orig_y:
-                if not invert:
-                    if ((byt >> i) & 1):
-                        fbuf.pixel(xpos,ypos,1)
-                else:
-                    fbuf.pixel(xpos,ypos,(invert,not invert)[((byt >> i) & 1)])
+                paint_flag = (invert,not invert)[((byt >> i) & 1)]
+                if paint_flag:
+                    fbuf.pixel(xpos,ypos,fill)
             xpos+= 1
             if xpos >= charsize[0]+orig_x:
                 xpos = orig_x
                 ypos += 1
             
-def printchar(letter,xpos,ypos,fbuf,font,invert = False,charwidth=None):
+def printchar(letter,xpos,ypos,fbuf,font,invert = False,charwidth=None,fill = 1):
     Schar_dict = {231: (None, 99, 96), 199: (None, 67, 96), 225: (98, 97, None), 233: (98, 101, None), 237: (98, 105, None), 243: (98, 111, None), 250: (98, 117, None), 193: (103, 65, None), 201: (103, 69, None), 205: (103, 73, None), 211: (103, 79, None), 218: (103, 85, None), 226: (99, 97, None), 234: (99, 97, None), 244: (99, 111, None), 227: (94, 97, None), 245: (94, 111, None), 194: (104, 65, None), 202: (104, 69, None), 212: (104, 79, None), 195: (107, 65, None), 213: (107, 79, None)}
     if charwidth == None:
         charwidth = font.size[0]
@@ -140,26 +138,30 @@ def printchar(letter,xpos,ypos,fbuf,font,invert = False,charwidth=None):
         charval = 0x3f
 
     character = font.getchar(charval-32)
-    DrawPixels(xpos,ypos,character,font.size,fbuf,invert=invert)
+    DrawPixels(xpos,ypos,character,font.size,fbuf,invert=invert,fill = fill)
     if addontopval:
         addontop = font.getchar(addontopval)
-        DrawPixels(xpos,ypos-font.size[1],addontop,font.size,fbuf,invert=invert)
+        DrawPixels(xpos,ypos-font.size[1],addontop,font.size,fbuf,invert=invert,fill = fill)
     if addbelowval:
         addbelow = font.getchar(addbelowval)
-        DrawPixels(xpos,ypos+font.size[1],addbelow,font.size,fbuf,invert=invert)
+        DrawPixels(xpos,ypos+font.size[1],addbelow,font.size,fbuf,invert=invert,fill = fill)
         
     
-def prt(string,xpos,ypos,spce,fbuf,font,invert=False):
+def prt(string,xpos,ypos,spce,fbuf,font,invert=False,color = None):
     char_size = font.size
+    if color == None:
+        fill = 1
+    else:
+        fill = color
+        
     if invert:
         string_width = (char_size[0]+spce)*(len(string)-1)+char_size[0]+1
         string_height = char_size[1]
-        fbuf.rect(xpos-1, ypos-1, string_width+1, string_height+2, 1)
+        fbuf.rect(xpos-1, ypos-1, string_width+1, string_height+2, fill)
+    
     for i,c in enumerate(string):
-        printchar(c,xpos,ypos,fbuf,font = font,invert=invert,charwidth=char_size[0])
+        printchar(c,xpos,ypos,fbuf,font = font,invert=invert,charwidth=char_size[0],fill=fill)
         xpos+=(spce+char_size[0])
         if (invert and i < len(string)-1):
-            fbuf.rect(xpos-spce, ypos, spce, string_height, 1,1)
-
-
+            fbuf.rect(xpos-spce, ypos, spce, string_height, color,fill)
 
